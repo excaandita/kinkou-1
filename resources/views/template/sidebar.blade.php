@@ -69,6 +69,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('data-layanan-berobat') }}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Berobat
+              </p>
+            </a>
+          </li>
         </li>
       </ul>
     </nav>

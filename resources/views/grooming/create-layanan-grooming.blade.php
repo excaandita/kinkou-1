@@ -71,12 +71,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       @endforeach
                   </select>
                 </div>
-                <div class="form-group">
-                  <input type="text" name="total" id="total" class="form-control" placeholder="Total">
-                </div>
                   <div class="form-group">
                     <button type="submit" class="btn btn-success">Simpan</button>
                   </div>
+                  <p>Customer belum terdaftar ? <a href="{{ route('create-customer') }}">Tambah Customer </a></p>
+                  <p>Hewan belum terdaftar ? <a href="{{ route('create-hewan') }}">Tambah Hewan </a></p>
               </form>
             </div>
         </div>

@@ -87,15 +87,6 @@ class LayananGroomingController extends Controller
      */
     public function update(Request $request, $id)
     {   
-        $groo = Grooming::findorfail($id);
-        $groo->update($request->all());
-
-        $hwn = Hewan::findorfail($id);
-        $hwn->update($request->all());
-
-        $cust = Customer::findorfail($id);
-        $cust->update($request->all());
-
         $lygro = Layanan_Grooming::findorfail($id);
         $lygro->update($request->all());
 

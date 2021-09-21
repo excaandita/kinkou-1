@@ -25,12 +25,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="container-fluid">
                 <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Grooming</h1>
+                    <h1 class="m-0">Berobat</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="/">Home</a></li>
-                    <li class="breadcrumb-item active">Grooming</li>
+                    <li class="breadcrumb-item active">Berobat</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -43,7 +43,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="card card-info card-outline">
             <div class="card-header">
                 <div class="card-tools">
-                  <a href="{{ route('create-layanan-grooming') }}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
+                  <a href="{{ route('create-layanan-berobat') }}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
                 </div>
             </div>
             
@@ -51,21 +51,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <table class="table table-bordered">
                   <tr>
                     <th>ID</th>
-                    <th>Nama Grooming</th>
                     <th>Nama Hewan</th>
                     <th>Nama Customer</th>
-                    <th>Total</th>
+                    <th>Nama Penyakit</th>
                     <th>Aksi</th>
                   </tr>
-                  @foreach ($datalygro as $item)
+                  @foreach ($datalyob as $item)
                   <tr>
                     <td>{{ $item->id }}</td>
-                    <td>{{ $item->grooming->namagrooming }}</td>
                     <td>{{ $item->hewan->namahewan }}</td>
                     <td>{{ $item->customer->namacust }}</td>
-                    <td>{{ $item->grooming->hargagrooming }}</td>
+                    <td>{{ $item->penyakit->namapenyakit }}</td>
                     <td>
-                        <a href="{{ url('grooming/edit-layanan-grooming',$item->id) }}"><i class="fas fa-edit"></i></a> | <a href="{{ url('grooming/delete-layanan-grooming',$item->id) }}"><i class="fas fa-trash-alt" style="color: red"></i></a>
+                        <a href="{{ url('berobat/edit-layanan-berobat',$item->id) }}"><i class="fas fa-edit"></i></a> | <a href="{{ url('berobat/delete-layanan-berobat',$item->id) }}"><i class="fas fa-trash-alt" style="color: red"></i></a>
                     </td>
                   </tr>
                   @endforeach

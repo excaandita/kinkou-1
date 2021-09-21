@@ -25,12 +25,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="container-fluid">
                 <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Data Customer</h1>
+                    <h1 class="m-0">Berobat</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="/">Home</a></li>
-                    <li class="breadcrumb-item active">Data Customer</li>
+                    <li class="breadcrumb-item active">Berobat</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -42,26 +42,44 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="content">
         <div class="card card-info card-outline">
             <div class="card-header">
-              <h3>Create Data Customer</h3>
+              <h3>Create Berobat</h3>
             </div>
             <div class="card-body">
-              <form action="{{ route('simpan-customer') }}" method="POST">
+              <form action="{{ route('simpan-layanan-berobat') }}" method="POST">
                 {{ csrf_field() }}
-                  <div class="form-group">
-                    <input type="text" name="namacust" id="namacust" class="form-control" placeholder="Nama Customer">
-                  </div>
-                  <div class="form-group">
-                    <textarea name="alamatcust" id="alamatcust" class="form-control" placeholder="Alamat Customer"></textarea>
-                  </div>
-                  <div class="form-group">
-                    <input type="text" name="telpcust" id="telpcust" class="form-control" placeholder="Telp Customer">
-                  </div>
+                <div class="form-group">
+                  <select class="form-control select2" style="width:100%;" name="hewan_id" id="hewan_id">
+                    <option disabled value>Pilih Hewan</option>
+                      @foreach ($hwn as $item)
+                      <option value="{{ $item->id }}">{{ $item->namahewan }}</option>  
+                      @endforeach
+                  </select>
+                </div>
+                <div class="form-group">
+                  <select class="form-control select2" style="width:100%;" name="customer_id" id="customer_id">
+                    <option disabled value>Pilih Customer</option>
+                      @foreach ($cust as $item)
+                      <option value="{{ $item->id }}">{{ $item->namacust }}</option>  
+                      @endforeach
+                  </select>
+                </div>
+                <div class="form-group">
+                  <select class="form-control select2" style="width:100%;" name="penyakit_id" id="penyakit_id">
+                    <option disabled value>Pilih Penyakit</option>
+                      @foreach ($pykt as $item)
+                      <option value="{{ $item->id }}">{{ $item->namapenyakit }}</option>  
+                      @endforeach
+                  </select>
+                </div>
                   <div class="form-group">
                     <button type="submit" class="btn btn-success">Simpan</button>
                   </div>
+                  <p>Customer belum terdaftar ? <a href="{{ route('create-customer') }}">Tambah Customer </a></p>
+                  <p>Hewan belum terdaftar ? <a href="{{ route('create-hewan') }}">Tambah Hewan </a></p>
               </form>
             </div>
         </div>
+    </div>
     </div>
           <!-- /.content -->
     </div>

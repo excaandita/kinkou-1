@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use App\Models\Hewan;
+use App\Models\Penyakit;
+use App\Models\Layanan_Berobat;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 
-class HewanController extends Controller
+class LayananBerobatController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +17,8 @@ class HewanController extends Controller
      */
     public function index()
     {
-        $datahewan = Hewan::with('customer')->paginate(10);
-        return view('hewan.data-hewan', compact('datahewan'));
+        $datalyob = Layanan_Berobat::with('hewan','customer','penyakit')->paginate(10);
+        return view('berobat.data-layanan-berobat', compact('datalyob'));
     }
 
     /**
@@ -27,8 +28,10 @@ class HewanController extends Controller
      */
     public function create()
     {
+        $hwn = Hewan::all();
         $cust = Customer::all();
-        return view('hewan.create-hewan',compact('cust'));
+        $pykt = Penyakit::all();
+        return view('berobat.create-layanan-berobat',compact('hwn','cust','pykt'));
     }
 
     /**
@@ -39,13 +42,13 @@ class HewanController extends Controller
      */
     public function store(Request $request)
     {
-        Hewan::create([
-            'namahewan' => $request->namahewan,
-            'jenishewan' => $request->jenishewan,
+        Layanan_Berobat::create([
+            'hewan_id' => $request->hewan_id,
             'customer_id' => $request->customer_id,
+            'penyakit_id' => $request->penyakit_id,
         ]);
 
-        return redirect('/hewan/data-hewan')->with('toast_success', 'Data Berhasil Disimpan');
+        return redirect('/berobat/data-layanan-berobat')->with('toast_success', 'Data Berhasil Disimpan');
     }
 
     /**
@@ -67,9 +70,11 @@ class HewanController extends Controller
      */
     public function edit($id)
     {
+        $hwn = Hewan::all();
         $cust = Customer::all();
-        $hewan = Hewan::with('customer')->findorfail($id);
-        return view('/hewan/edit-hewan',compact('hewan','cust'));
+        $pykt = Penyakit::all();
+        $lyob = Layanan_Berobat::with('hewan','customer','penyakit')->findorfail($id);
+        return view('/berobat/edit-layanan-berobat',compact('lyob','hwn','cust','pykt'));
     }
 
     /**
@@ -81,10 +86,10 @@ class HewanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $hewan = Hewan::findorfail($id);
-        $hewan->update($request->all());
+        $lyob = Layanan_Berobat::findorfail($id);
+        $lyob->update($request->all());
 
-        return redirect('/hewan/data-hewan')->with('toast_success', 'Data Berhasil Diubah');
+        return redirect('/berobat/data-layanan-berobat')->with('toast_success', 'Data Berhasil Diubah');
     }
 
     /**
@@ -95,8 +100,8 @@ class HewanController extends Controller
      */
     public function destroy($id)
     {
-        $hewan = Hewan::findorfail($id);
-        $hewan->delete();
+        $lyob = Layanan_Berobat::findorfail($id);
+        $lyob->delete();
         return back()->with('info', 'Data Berhasil Dihapus');
     }
 }

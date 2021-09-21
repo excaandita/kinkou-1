@@ -56,7 +56,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <th>ID Customer</th>
                     <th>Aksi</th>
                   </tr>
-                  @foreach ($datahwn as $item)
+                  @foreach ($datahewan as $item)
                   <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->namahewan }}</td>

@@ -25,12 +25,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="container-fluid">
                 <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Grooming</h1>
+                    <h1 class="m-0">Berobat</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="/">Home</a></li>
-                    <li class="breadcrumb-item active">Grooming</li>
+                    <li class="breadcrumb-item active">Berobat</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -42,24 +42,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="content">
         <div class="card card-info card-outline">
             <div class="card-header">
-              <h3>Update Grooming</h3>
+              <h3>Update Berobat</h3>
             </div>
             <div class="card-body">
-              <form action="{{ url('grooming/update-layanan-grooming',$lygro->id) }}" method="POST">
+              <form action="{{ url('berobat/update-layanan-berobat',$lyob->id) }}" method="POST">
                 {{ csrf_field() }}
-            <div class="form-group">
-              <select class="form-control select2" style="width:100%;" name="grooming_id" id="grooming_id">
-                <option disabled value>Pilih Grooming</option>
-                <option value="{{ $lygro->grooming_id }}">{{ $lygro->grooming->namagrooming }}</option>
-                  @foreach ($groo as $item)
-                  <option value="{{ $item->id }}">{{ $item->namagrooming }}</option>  
-                  @endforeach
-              </select>
-            </div>
             <div class="form-group">
               <select class="form-control select2" style="width:100%;" name="hewan_id" id="hewan_id">
                 <option disabled value>Pilih Hewan</option>
-                <option value="{{ $lygro->hewan_id }}">{{ $lygro->hewan->namahewan }}</option>
+                <option value="{{ $lyob->hewan_id }}">{{ $lyob->hewan->namahewan }}</option>
                   @foreach ($hwn as $item)
                   <option value="{{ $item->id }}">{{ $item->namahewan }}</option>  
                   @endforeach
@@ -68,9 +59,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="form-group">
                 <select class="form-control select2" style="width:100%;" name="customer_id" id="customer_id">
                   <option disabled value>Pilih Customer</option>
-                  <option value="{{ $lygro->customer_id }}">{{ $lygro->customer->namacust }}</option>
+                  <option value="{{ $lyob->customer_id }}">{{ $lyob->customer->namacust }}</option>
                     @foreach ($cust as $item)
                     <option value="{{ $item->id }}">{{ $item->namacust }}</option>  
+                    @endforeach
+                </select>
+              </div>
+              <div class="form-group">
+                <select class="form-control select2" style="width:100%;" name="penyakit_id" id="penyakit_id">
+                  <option disabled value>Pilih Penyakit</option>
+                  <option value="{{ $lyob->penyakit_id }}">{{ $lyob->penyakit->namapenyakit }}</option>
+                    @foreach ($pykt as $item)
+                    <option value="{{ $item->id }}">{{ $item->namapenyakit }}</option>  
                     @endforeach
                 </select>
               </div>

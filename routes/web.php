@@ -58,3 +58,10 @@ Route::post('/grooming/simpan-layanan-grooming','App\Http\Controllers\LayananGro
 Route::get('/grooming/edit-layanan-grooming/{id}','App\Http\Controllers\LayananGroomingController@edit')->name('edit-layanan-grooming');
 Route::post('/grooming/update-layanan-grooming/{id}','App\Http\Controllers\LayananGroomingController@update')->name('update-layanan-grooming');
 Route::get('/grooming/delete-layanan-grooming/{id}','App\Http\Controllers\LayananGroomingController@destroy')->name('deletephp a-layanan-grooming');
+
+Route::get('/berobat/data-layanan-berobat','App\Http\Controllers\LayananBerobatController@index')->name('data-layanan-berobat');
+Route::get('/berobat/create-layanan-berobat','App\Http\Controllers\LayananBerobatController@create')->name('create-layanan-berobat');
+Route::post('/berobat/simpan-layanan-berobat','App\Http\Controllers\LayananBerobatController@store')->name('simpan-layanan-berobat');
+Route::get('/berobat/edit-layanan-berobat/{id}','App\Http\Controllers\LayananBerobatController@edit')->name('edit-layanan-berobat');
+Route::post('/berobat/update-layanan-berobat/{id}','App\Http\Controllers\LayananBerobatController@update')->name('update-layanan-berobat');
+Route::get('/berobat/delete-layanan-berobat/{id}','App\Http\Controllers\LayananBerobatController@destroy')->name('deletephp a-layanan-berobat');
